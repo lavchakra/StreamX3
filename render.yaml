@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: streamx3-neural-brief
+    env: docker
+    plan: free
+    region: ohio
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: GROQ_API_KEY
+        sync: false # You will need to manually paste this in the Render Dashboard
+      - key: NODE_ENV
+        value: production

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap');
+    body {
+      font-family: 'Outfit', sans-serif;
+      width: 380px;
+      padding: 0;
+      margin: 0;
+      background-color: #020617;
+      color: #f8fafc;
+      overflow-x: hidden;
+    }
+    .container { padding: 20px; }
+    .logo-header {
+      background: rgba(15, 23, 42, 0.6);
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(0, 242, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    h2 { margin: 0; font-size: 1.2rem; color: #00f2ff; text-transform: uppercase; letter-spacing: 1px; }
+    .status-tag { font-family: var(--font-mono); font-size: 0.7rem; color: #94a3b8; }
+    
+    .content { padding: 20px; }
+    #summarizeBtn {
+      width: 100%;
+      padding: 14px;
+      background: #00f2ff;
+      color: #020617;
+      border: none;
+      border-radius: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    #summarizeBtn:disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(1); }
+    
+    #results { display: none; margin-top: 10px; }
+    .card {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #00f2ff;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .card-body { font-size: 0.9rem; line-height: 1.5; color: #cbd5e1; }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: rgba(255,255,255,0.05);
+    }
+    
+    .loading { display: none; text-align: center; padding: 20px; }
+    .spinner {
+      width: 30px; height: 30px;
+      border: 3px solid rgba(0,242,255,0.1);
+      border-top-color: #00f2ff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 12px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="logo-header">
+    <h2>CyberBrief</h2>
+    <span class="status-tag">SYST_ACTIVE</span>
+  </div>
+
+  <div class="content">
+    <div id="setup-view">
+      <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0;">Perform neural analysis on this article.</p>
+      <button id="summarizeBtn">ANALYSIS_START</button>
+    </div>
+
+    <div id="loading" class="loading">
+      <div class="spinner"></div>
+      <p style="color: #00f2ff; font-weight: 600;">EXTRACTING NEURAL DATA...</p>
+    </div>
+
+    <div id="results">
+      <div class="card">
+        <div class="card-title">// ENGLISH_SUMMARY</div>
+        <div class="card-body" id="summaryEn">...</div>
+      </div>
+      <div class="card">
+        <div class="card-title">// हिंदी_सारांश</div>
+        <div class="card-body" id="summaryHi">...</div>
+      </div>
+      <div style="display: flex; gap: 10px;">
+        <div class="card" style="flex: 1; margin-bottom: 0;">
+          <div class="card-title">SENTIMENT</div>
+          <div id="sentiment" class="badge">NEUTRAL</div>
+        </div>
+        <div class="card" style="flex: 1; margin-bottom: 0;">
+          <div class="card-title">CATEGORY</div>
+          <div id="category" class="badge">GEN_NEWS</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "NewsBriefAI",
+  "version": "1.0",
+  "description": "Summarize the current news article using NewsBriefAI.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Summarize this page"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs"
+  ]
+}
