@@ -11,8 +11,8 @@ document.getElementById('summarizeBtn').addEventListener('click', async () => {
         loadingView.style.display = 'block';
         
         try {
-            // Unified URL from Cloudflare
-            const API_URL = 'https://strand-congratulations-consequently-cost.trycloudflare.com';
+            // Permanent Production URL on Render
+            const API_URL = 'https://streamx3-neural-brief.onrender.com';
             
             const response = await fetch(`${API_URL}/analyze`, {
                 method: 'POST',
