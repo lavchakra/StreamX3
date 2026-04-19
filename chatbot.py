@@ -15,18 +15,28 @@ _client: Groq | None = None
 
 
 def _get_client() -> Groq:
-    """Lazily initialise the Groq client (reads GROQ_API_KEY from .env)."""
+    """Lazily initialise the Groq client (reads GROQ_API_KEY from env or .env)."""
     global _client
-    from dotenv import dotenv_values
-    config = dotenv_values(".env")
-    api_key = config.get("GROQ_API_KEY")
+    if _client:
+        return _client
+        
+    # Priority: 1. Environment Variable, 2. .env file
+    api_key = os.getenv("GROQ_API_KEY")
+    
+    if not api_key:
+        from dotenv import dotenv_values
+        config = dotenv_values(".env")
+        api_key = config.get("GROQ_API_KEY")
+
     if not api_key or api_key == "your_groq_api_key_here":
         raise EnvironmentError(
             "GROQ_API_KEY is not set. "
-            "Add it to your .env file or environment variables."
+            "Please set it as an environment variable or in your .env file."
         )
+    
     _client = Groq(api_key=api_key)
     return _client
+
 
 
 _SYSTEM_PROMPT = (
