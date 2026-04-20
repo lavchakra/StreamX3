@@ -2,249 +2,179 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap');
-
     :root {
-      --bg-deep: #020617;
-      --glass: rgba(255, 255, 255, 0.03);
-      --glass-border: rgba(255, 255, 255, 0.08);
-      --brand-primary: #6366f1;
-      --brand-secondary: #22d3ee;
-      --text-main: #f8fafc;
+      --primary: #f97316; /* Vibrant Orange */
+      --secondary: #fbbf24; /* Amber */
+      --bg: #020617; /* Deep Slate */
+      --card-bg: rgba(15, 23, 42, 0.7);
+      --border: rgba(249, 115, 22, 0.2);
+      --text: #f8fafc;
       --text-muted: #94a3b8;
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      width: 400px;
+      font-family: 'Outfit', sans-serif;
+      width: 380px;
       padding: 0;
       margin: 0;
-      background-color: var(--bg-deep);
-      color: var(--text-main);
+      background-color: var(--bg);
+      color: var(--text);
       overflow-x: hidden;
       background-image: 
-        radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 100% 100%, rgba(34, 211, 238, 0.1) 0%, transparent 50%);
-      min-height: 500px;
+        radial-gradient(at 0% 0%, rgba(249, 115, 22, 0.1) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(251, 191, 36, 0.05) 0px, transparent 50%);
     }
 
     .header {
-      padding: 24px 20px;
+      padding: 20px;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(2, 6, 23, 0.5);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--glass-border);
-      position: sticky;
-      top: 0;
-      z-index: 10;
     }
 
-    .logo-container {
+    .logo {
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    .logo-icon {
-      width: 24px;
-      height: 24px;
-      background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
-    }
+    .logo-icon { font-size: 1.5rem; }
 
-    h1 {
-      font-family: 'Outfit', sans-serif;
+    h2 {
       margin: 0;
       font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      background: linear-gradient(to right, #fff, #94a3b8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .status-pill {
-      font-size: 0.65rem;
-      font-weight: 700;
-      padding: 4px 10px;
-      background: rgba(34, 211, 238, 0.1);
-      color: var(--brand-secondary);
-      border: 1px solid rgba(34, 211, 238, 0.2);
-      border-radius: 50px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
     }
 
-    .main-container {
+    .brand-accent { color: var(--primary); }
+
+    .status {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    .content {
       padding: 24px 20px;
     }
 
-    #setup-view {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding-top: 20px;
-    }
-
-    .hero-text {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-      line-height: 1.2;
-    }
-
-    .sub-text {
-      font-size: 0.9rem;
+    #setup-view p {
+      font-size: 0.95rem;
       color: var(--text-muted);
-      margin-bottom: 30px;
-      max-width: 280px;
+      line-height: 1.5;
+      margin-top: 0;
     }
 
     #summarizeBtn {
       width: 100%;
       padding: 16px;
-      background: linear-gradient(135deg, var(--brand-primary), #4f46e5);
+      background: linear-gradient(135deg, var(--primary), #ea580c);
       color: white;
       border: none;
-      border-radius: 14px;
-      font-family: 'Outfit', sans-serif;
-      font-weight: 700;
+      border-radius: 12px;
+      font-weight: 800;
       font-size: 1rem;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+      box-shadow: 0 10px 20px -5px rgba(249, 115, 22, 0.4);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    #summarizeBtn:hover {
+    #summarizeBtn:hover:not(:disabled) {
       transform: translateY(-2px);
-      box-shadow: 0 15px 30px -5px rgba(79, 70, 229, 0.5);
+      box-shadow: 0 15px 25px -5px rgba(249, 115, 22, 0.5);
     }
 
-    #summarizeBtn:active {
-      transform: translateY(0);
-    }
-
-    #summarizeBtn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      filter: grayscale(0.5);
-    }
+    #summarizeBtn:disabled { opacity: 0.5; cursor: not-allowed; }
 
     /* Loading State */
-    .loading-view {
+    .loading {
       display: none;
       text-align: center;
       padding: 40px 0;
     }
 
-    .pulse-container {
-      width: 80px;
-      height: 80px;
+    .spinner {
       position: relative;
-      margin: 0 auto 24px;
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 20px;
     }
 
     .pulse {
       position: absolute;
       width: 100%;
       height: 100%;
-      background: var(--brand-primary);
+      background: var(--primary);
       border-radius: 50%;
       opacity: 0.6;
-      animation: pulse 2s ease-out infinite;
-    }
-
-    .pulse:nth-child(2) {
-      animation-delay: 1s;
+      animation: pulse 1s ease-out infinite;
     }
 
     @keyframes pulse {
-      0% { transform: scale(0.1); opacity: 0.8; }
-      100% { transform: scale(1.2); opacity: 0; }
-    }
-
-    .neural-mesh {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 40px;
-      height: 40px;
-      background: white;
-      border-radius: 50%;
-      z-index: 2;
-      box-shadow: 0 0 30px var(--brand-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      0% { transform: scale(0.2); opacity: 0.8; }
+      100% { transform: scale(1.5); opacity: 0; }
     }
 
     .loading-text {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--brand-secondary);
+      font-weight: 700;
+      color: var(--secondary);
       letter-spacing: 0.05em;
     }
 
-    /* Results UI */
+    /* Results */
     #results {
       display: none;
-      animation: slideDown 0.5s ease-out;
+      margin-top: 10px;
+      animation: fadeIn 0.4s ease;
     }
 
-    @keyframes slideDown {
+    @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .card {
-      background: var(--glass);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--glass-border);
-      border-radius: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
       padding: 18px;
       margin-bottom: 20px;
-      transition: border-color 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
 
-    .card:hover {
-      border-color: rgba(255, 255, 255, 0.15);
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 4px; height: 100%;
+      background: var(--primary);
     }
 
-    .card-label {
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 800;
-      color: var(--brand-secondary);
+    .card-title {
+      font-weight: 700;
+      font-size: 0.75rem;
+      color: var(--primary);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 1px;
       margin-bottom: 12px;
       display: flex;
       align-items: center;
       gap: 6px;
-    }
-
-    .card-label::before {
-      content: '';
-      width: 4px;
-      height: 4px;
-      background: var(--brand-secondary);
-      border-radius: 50%;
     }
 
     .card-body {
@@ -253,16 +183,16 @@
       color: #e2e8f0;
     }
 
-    .meta-grid {
+    .meta-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 15px;
     }
 
-    .meta-item {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--glass-border);
-      border-radius: 12px;
+    .meta-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px dotted var(--border);
+      border-radius: 10px;
       padding: 12px;
       text-align: center;
     }
@@ -276,88 +206,74 @@
     }
 
     .meta-value {
-      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
       font-size: 0.85rem;
-      font-weight: 600;
       color: #fff;
     }
 
     .badge-positive { color: #4ade80; }
     .badge-negative { color: #f87171; }
-    .badge-neutral { color: #fbbf24; }
+    .badge-neutral { color: var(--secondary); }
 
     footer {
       text-align: center;
       padding: 20px;
-      font-size: 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
       color: var(--text-muted);
-      border-top: 1px solid var(--glass-border);
+      border-top: 1px solid rgba(255,255,255,0.05);
       margin-top: 20px;
     }
-
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="logo-container">
-      <div class="logo-icon">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l4-4V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2z"/></svg>
-      </div>
-      <h1>NeuralBrief</h1>
+  <div class="header">
+    <div class="logo">
+      <span class="logo-icon">🚀</span>
+      <h2>Cyber<span class="brand-accent">Brief</span></h2>
     </div>
-    <div class="status-pill">Local Node V1</div>
-  </header>
+    <span class="status">Neural Core v1.2</span>
+  </div>
 
-  <div class="main-container">
-    <!-- SETUP VIEW -->
+  <div class="content">
     <div id="setup-view">
-      <div class="hero-text">Unlock the core of every story.</div>
-      <div class="sub-text">Our neural engine extracts key insights and translates them instantly.</div>
-      <button id="summarizeBtn">
-        <span>Run Deep Analysis</span>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </button>
+      <p>Analyze this page with the Solar Flare Neural Engine.</p>
+      <button id="summarizeBtn">Analysis Start</button>
     </div>
 
-    <!-- LOADING VIEW -->
-    <div id="loading" class="loading-view">
-      <div class="pulse-container">
+    <div id="loading" class="loading">
+      <div class="spinner">
         <div class="pulse"></div>
-        <div class="pulse"></div>
-        <div class="neural-mesh">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2.5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-        </div>
       </div>
-      <div class="loading-text">NEURAL EXTRACTION IN PROGRESS...</div>
+      <p class="loading-text">SCALING NEURAL LAYERS...</p>
     </div>
 
-    <!-- RESULTS VIEW -->
     <div id="results">
       <div class="card">
-        <div class="card-label">Executive Summary</div>
+        <div class="card-title">English Summary</div>
         <div class="card-body" id="summaryEn">...</div>
       </div>
-      
+
       <div class="card">
-        <div class="card-label">हिंदी सारांश (Hindi)</div>
+        <div class="card-title">हिंदी सारांश</div>
         <div class="card-body" id="summaryHi">...</div>
       </div>
 
-      <div class="meta-grid">
-        <div class="meta-item">
+      <div class="meta-row">
+        <div class="meta-card">
           <div class="meta-title">Sentiment</div>
-          <div class="meta-value" id="sentiment">NEUTRAL</div>
+          <div id="sentiment" class="meta-value">NEUTRAL</div>
         </div>
-        <div class="meta-item">
+        <div class="meta-card">
           <div class="meta-title">Category</div>
-          <div class="meta-value" id="category">GENERAL</div>
+          <div id="category" class="meta-value">GENERAL</div>
         </div>
       </div>
     </div>
   </div>
 
   <footer>
-    NeuralBrief Engine &copy; 2026 • Powered by LLaMA 3.3
+    SOLAR FLARE SYSTEM &bull; PORT 8000 &bull; 2026
   </footer>
 
   <script src="popup.js"></script>
