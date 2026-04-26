@@ -31,6 +31,7 @@ def _generate_summary_via_llm(text: str, language: str = "english") -> str:
     else:
         prompt = f"""
         Summarize the following news article in exactly 4 lines.
+        Respond ONLY in English, regardless of the article's language. 
         Be concise, factual, and clear.
 
         Article:
@@ -57,8 +58,8 @@ def _extract_metadata_via_llm(text: str) -> dict:
 
     prompt = f"""
     Extract exactly and return as JSON:
-    1. Top 5 keywords as a list of strings
-    2. One category from: Politics, Sports, Tech, Business, Health, World
+    1. Top 5 keywords as a list of strings (Respond in English only)
+    2. One category from: Politics, Sports, Tech, Business, Health, World (In English)
 
     Reply in JSON only like this:
     {{"keywords": ["word1", "word2", "word3", "word4", "word5"], "category": "Tech"}}

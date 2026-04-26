@@ -1,14 +1,19 @@
 {
-  "manifest_version": 3,
-  "name": "NewsBriefAI",
+  "manifest_version": 2,
+  "name": "NewsBrief AI",
   "version": "1.0",
-  "description": "Summarize the current news article using NewsBriefAI.",
-  "action": {
-    "default_popup": "popup.html",
-    "default_title": "Summarize this page"
-  },
+  "description": "Summarize any news article instantly in English or Hindi using AI",
   "permissions": [
     "activeTab",
-    "tabs"
-  ]
+    "storage"
+  ],
+  "browser_action": {
+    "default_title": "NewsBrief AI",
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "48": "icon.png",
+    "96": "icon.png"
+  }
 }
