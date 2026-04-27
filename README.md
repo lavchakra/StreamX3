@@ -113,3 +113,6 @@ python test.py
    - **Start Command**: `uvicorn main:app --host 0.0.0.0 --port $PORT`
 4. Add `GROQ_API_KEY` in the **Environment** tab.
 5. Update `API_BASE_URL` in your Chrome extension's `sidepanel.js` to the Render URL.
+
+
+
